@@ -1,18 +1,17 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { SelectedPage } from "@/interfaces";
 import Link from "./Link";
 import { ActionButton } from "@/components";
+import AppContext from "@/context/AppContext";
 
 interface INavbar {
   isTopOfPage: boolean;
-  selectedPage: SelectedPage;
-  setSelectedPage: (value: SelectedPage) => void;
 }
 
-const Navbar: FC<INavbar> = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
+const Navbar: FC<INavbar> = ({ isTopOfPage }) => {
+  const { page, setPage } = useContext(AppContext);
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
@@ -30,14 +29,14 @@ const Navbar: FC<INavbar> = ({ isTopOfPage, selectedPage, setSelectedPage }) => 
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  <Link title="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link title="Benefits" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link title="Our Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link title="Contact Us" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                  <Link title="Home" page={page} setPage={setPage} />
+                  <Link title="Benefits" page={page} setPage={setPage} />
+                  <Link title="Our Classes" page={page} setPage={setPage} />
+                  <Link title="Contact Us" page={page} setPage={setPage} />
                 </div>
                 <div className={`${flexBetween} gap-8`}>
                   <p>Sign In</p>
-                  <ActionButton setSelectedPage={setSelectedPage}>Become a Member</ActionButton>
+                  <ActionButton setPage={setPage}>Become a Member</ActionButton>
                 </div>
               </div>
             ) : (
@@ -61,10 +60,10 @@ const Navbar: FC<INavbar> = ({ isTopOfPage, selectedPage, setSelectedPage }) => 
 
           {/* MENU ITEMS */}
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
-            <Link title="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link title="Benefits" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link title="Our Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link title="Contact Us" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+            <Link title="Home" page={page} setPage={setPage} />
+            <Link title="Benefits" page={page} setPage={setPage} />
+            <Link title="Our Classes" page={page} setPage={setPage} />
+            <Link title="Contact Us" page={page} setPage={setPage} />
           </div>
         </div>
       )}

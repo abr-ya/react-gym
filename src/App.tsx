@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Footer, Navbar } from "./components";
 import { SelectedPage } from "./interfaces";
 import { Benefits, Classes, Contact, Home } from "./sections";
+import AppContext, { AppProvider } from "./context/AppContext";
 
 const App = () => {
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
+  const { setPage } = useContext(AppContext);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsTopOfPage(window.scrollY === 0);
-      if (window.scrollY === 0) setSelectedPage(SelectedPage.Home);
+      if (window.scrollY === 0) setPage(SelectedPage.Home);
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -18,14 +19,16 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app bg-gray-20">
-      <Navbar isTopOfPage={isTopOfPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-      <Home />
-      <Benefits />
-      <Classes />
-      <Contact />
-      <Footer />
-    </div>
+    <AppProvider>
+      <div className="app bg-gray-20">
+        <Navbar isTopOfPage={isTopOfPage} />
+        <Home />
+        <Benefits />
+        <Classes />
+        <Contact />
+        <Footer />
+      </div>
+    </AppProvider>
   );
 };
 

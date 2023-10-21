@@ -4,3 +4,12 @@ export enum SelectedPage {
   OurClasses = "ourclasses",
   ContactUs = "contactus",
 }
+
+export interface IApp {
+  page: SelectedPage;
+}
+
+export interface IAction<T, P> {
+  type: T;
+  payload?: P;
+}

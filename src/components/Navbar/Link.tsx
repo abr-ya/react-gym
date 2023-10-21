@@ -4,20 +4,20 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 
 interface ILink {
   title: string;
-  selectedPage: SelectedPage;
-  setSelectedPage: (value: SelectedPage) => void;
+  page: SelectedPage;
+  setPage: (value: SelectedPage) => void;
 }
 
-const Link: FC<ILink> = ({ title, selectedPage, setSelectedPage }) => {
+const Link: FC<ILink> = ({ title, page, setPage }) => {
   const lowerCasePage = title.toLowerCase().replace(/ /g, "") as SelectedPage;
 
   return (
     <AnchorLink
-      className={`${selectedPage === lowerCasePage ? "text-primary-500" : ""}
+      className={`${page === lowerCasePage ? "text-primary-500" : ""}
         transition duration-500 hover:text-primary-300
       `}
       href={`#${lowerCasePage}`}
-      onClick={() => setSelectedPage(lowerCasePage)}
+      onClick={() => setPage(lowerCasePage)}
     >
       {title}
     </AnchorLink>
