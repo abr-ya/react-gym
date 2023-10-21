@@ -1,7 +1,7 @@
-import { IAction, IApp, SelectedPage } from "@/interfaces";
+import { IAction, IAppContext, SelectedPage } from "@/interfaces";
 import { createContext, FC, ReactNode, useReducer } from "react";
 
-const initialState: IApp = {
+const initialState: IAppContext = {
   page: SelectedPage.Home,
 };
 
@@ -11,7 +11,7 @@ type PAYL = any;
 
 // Reducer mb separate File!
 // todo interface for reducer!
-const appReducer = (state: IApp, action: IAction<TYPE, PAYL>) => {
+const appReducer = (state: IAppContext, action: IAction<TYPE, PAYL>) => {
   switch (action.type) {
     case "SET_PAGE":
       return action.payload;
@@ -32,7 +32,7 @@ const initialContext = {
 };
 const AppContext = createContext<AppContextType>(initialContext);
 
-interface IAppManagerResult extends IApp {
+interface IAppManagerResult extends IAppContext {
   setPage: (page: SelectedPage) => void;
   resetApp: () => void;
 }

@@ -1,14 +1,14 @@
+import AppContext from "@/context/AppContext";
 import { SelectedPage } from "@/interfaces";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 interface ILink {
   title: string;
-  page: SelectedPage;
-  setPage: (value: SelectedPage) => void;
 }
 
-const Link: FC<ILink> = ({ title, page, setPage }) => {
+const Link: FC<ILink> = ({ title }) => {
+  const { page, setPage } = useContext(AppContext);
   const lowerCasePage = title.toLowerCase().replace(/ /g, "") as SelectedPage;
 
   return (

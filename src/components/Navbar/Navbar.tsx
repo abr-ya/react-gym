@@ -1,17 +1,15 @@
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Link from "./Link";
 import { ActionButton } from "@/components";
-import AppContext from "@/context/AppContext";
 
 interface INavbar {
   isTopOfPage: boolean;
 }
 
 const Navbar: FC<INavbar> = ({ isTopOfPage }) => {
-  const { page, setPage } = useContext(AppContext);
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
@@ -29,14 +27,14 @@ const Navbar: FC<INavbar> = ({ isTopOfPage }) => {
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  <Link title="Home" page={page} setPage={setPage} />
-                  <Link title="Benefits" page={page} setPage={setPage} />
-                  <Link title="Our Classes" page={page} setPage={setPage} />
-                  <Link title="Contact Us" page={page} setPage={setPage} />
+                  <Link title="Home" />
+                  <Link title="Benefits" />
+                  <Link title="Our Classes" />
+                  <Link title="Contact Us" />
                 </div>
                 <div className={`${flexBetween} gap-8`}>
                   <p>Sign In</p>
-                  <ActionButton setPage={setPage}>Become a Member</ActionButton>
+                  <ActionButton>Become a Member</ActionButton>
                 </div>
               </div>
             ) : (
@@ -60,10 +58,10 @@ const Navbar: FC<INavbar> = ({ isTopOfPage }) => {
 
           {/* MENU ITEMS */}
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
-            <Link title="Home" page={page} setPage={setPage} />
-            <Link title="Benefits" page={page} setPage={setPage} />
-            <Link title="Our Classes" page={page} setPage={setPage} />
-            <Link title="Contact Us" page={page} setPage={setPage} />
+            <Link title="Home" />
+            <Link title="Benefits" />
+            <Link title="Our Classes" />
+            <Link title="Contact Us" />
           </div>
         </div>
       )}

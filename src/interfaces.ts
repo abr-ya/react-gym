@@ -5,7 +5,7 @@ export enum SelectedPage {
   ContactUs = "contactus",
 }
 
-export interface IApp {
+export interface IAppContext {
   page: SelectedPage;
 }
 
