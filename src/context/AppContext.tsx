@@ -14,7 +14,7 @@ type PAYL = any;
 const appReducer = (state: IAppContext, action: IAction<TYPE, PAYL>) => {
   switch (action.type) {
     case "SET_PAGE":
-      return action.payload;
+      return { ...state, page: action.payload };
     case "RESET_APP":
       return initialState;
     default:
