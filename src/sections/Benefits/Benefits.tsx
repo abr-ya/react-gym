@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import AppContext from "@/context/AppContext";
-import { ActionButton } from "@/components";
+import { ActionButton, Title } from "@/components";
 import { SelectedPage } from "@/interfaces";
 import BenefitsPhoto from "@/assets/BenefitsPhoto.png";
 import Main from "./Main";
@@ -15,7 +15,7 @@ const Benefits = () => {
       <motion.div onViewportEnter={() => setPage(SelectedPage.Benefits)}>
         {/* HEADER */}
         <div>
-          <h1>MORE THAN JUST GYM</h1>
+          <Title>MORE THAN JUST GYM</Title>
           <p className="my-5 text-sm">
             We provide world class fitness equipment, trainers and classes to get you to your ultimate fitness goals
             with ease. We provide true care into each and every member.
@@ -36,9 +36,9 @@ const Benefits = () => {
             <div className="relative">
               <div className="before:absolute before:-left-20 before:-top-20 before:z-[1] before:content-abstractwaves">
                 <div>
-                  <h1>
+                  <Title>
                     MILLIONS OF HAPPY MEMBERS GETTING <span className="text-primary-500">FIT</span>
-                  </h1>
+                  </Title>
                 </div>
               </div>
             </div>
