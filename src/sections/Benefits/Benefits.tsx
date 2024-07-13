@@ -35,21 +35,30 @@ const Benefits = () => {
         {/* MAIN */}
         <Main />
 
-        {/* PHOTO AND DESCRIPTION */}
+        {/* PHOTO, TEXT AND BUTTON */}
         <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
           {/* PHOTO */}
           <img className="mx-auto" alt="benefits-page-graphic" src={BenefitsPhoto} />
 
-          {/* DESCRIPTION */}
+          {/* TEXT AND BUTTON */}
           <div>
             {/* TITLE */}
             <div className="relative">
               <div className="before:absolute before:-left-20 before:-top-20 before:z-[1] before:content-abstractwaves">
-                <div>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5 }}
+                  variants={{
+                    hidden: { opacity: 0, x: 50 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                >
                   <Title>
                     Millions of happy members getting <span className="text-primary-500">fit</span>
                   </Title>
-                </div>
+                </motion.div>
               </div>
             </div>
 

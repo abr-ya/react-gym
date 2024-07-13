@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import AppContext from "@/context/AppContext";
 import { SelectedPage } from "@/interfaces";
+import { Title } from "@/components";
 
 interface IBenefitItem {
   icon: JSX.Element;
@@ -24,7 +25,7 @@ const BenefitItem = ({ icon, title, description }: IBenefitItem) => {
         <div className="rounded-full border-2 border-gray-100 bg-primary-100 p-4">{icon}</div>
       </div>
 
-      <h4 className="font-bold">{title}</h4>
+      <Title tag="h3">{title}</Title>
       <p className="my-3">{description}</p>
       <AnchorLink
         className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
