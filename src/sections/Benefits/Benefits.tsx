@@ -14,13 +14,23 @@ const Benefits = () => {
     <section id="benefits" className="mx-auto min-h-full w-5/6 py-20">
       <motion.div onViewportEnter={() => setPage(SelectedPage.Benefits)}>
         {/* HEADER */}
-        <div>
-          <Title>MORE THAN JUST GYM</Title>
+        <motion.div
+          className="md:my-5 md:w-3/5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <Title>More than just gym</Title>
           <p className="my-5 text-sm">
             We provide world class fitness equipment, trainers and classes to get you to your ultimate fitness goals
             with ease. We provide true care into each and every member.
           </p>
-        </div>
+        </motion.div>
 
         {/* MAIN */}
         <Main />
@@ -37,7 +47,7 @@ const Benefits = () => {
               <div className="before:absolute before:-left-20 before:-top-20 before:z-[1] before:content-abstractwaves">
                 <div>
                   <Title>
-                    MILLIONS OF HAPPY MEMBERS GETTING <span className="text-primary-500">FIT</span>
+                    Millions of happy members getting <span className="text-primary-500">fit</span>
                   </Title>
                 </div>
               </div>
